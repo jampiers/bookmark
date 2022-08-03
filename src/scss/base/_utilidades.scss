@@ -1,0 +1,15 @@
+@use 'mixins' as m;
+
+.text-center {
+    text-align: center;
+}
+
+.text-start {
+    @include m.tablet { 
+        text-align: left;   
+    }
+}
+
+.text-end {
+    text-align: right;
+}

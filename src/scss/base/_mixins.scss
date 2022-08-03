@@ -1,0 +1,121 @@
+@use 'variables' as v; 
+
+/** Media Queries **/
+@mixin telefono {
+    @media (min-width: v.$telefono) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+
+@mixin tablet-xl {
+    @media (min-width: v.$tabletXl) {
+        @content;
+    }
+}
+  
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+@mixin desktop-xl {
+    @media (min-width: v.$desktopXl) {
+        @content;
+    }
+}
+
+
+
+
+@mixin botonMovil($color, $texto) {
+    background-color: transparent;
+    font-size: 1.8rem;
+    padding: .8rem 4rem;
+    width: 100%;
+    font-weight: 500;
+    text-align: center;
+    color: $texto;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+    border: none;
+    border: 2px solid $color;
+    border-radius: .5rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+@mixin boton($color, $texto) {
+    background-color: $color;
+    font-size: 1.6rem;
+    padding: 1rem 3.5rem;
+    font-weight: 400;
+    text-align: center;
+    color: $texto;
+    text-decoration: none;
+    border: none;
+    border: 2px solid $color;
+    border-radius: .5rem;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        cursor: pointer;
+        color: $color;
+        background-color: $texto;
+    }
+}
+
+@mixin botonBody($colorBg, $colorTexto) {
+    background-color: $colorBg;
+    font-size: 1.4rem;
+    padding: 1.3rem 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    color: $colorTexto;
+    text-decoration: none;
+    border: none;
+    border: 2px solid $colorBg;
+    transition-property: background-color, color;
+    transition-duration: .3s;
+    border-radius: .5rem;
+
+    &:hover {
+        background-color: $colorTexto;
+        color: $colorBg;
+    }
+}
+
+@mixin btnFirefox($colorBg, $colorTexto) {
+    background-color: lighten($colorBg, 35%);
+    font-size: 1.4rem;
+    padding: 1.3rem 1.2rem;
+    font-weight: 500;
+    text-align: center;
+    color: darken($colorTexto, 60%);
+    text-decoration: none;
+    border: none;
+    border: 2px solid lighten($colorBg, 35%);
+    transition-property: background-color, border;
+    transition-duration: .3s;
+    border-radius: .5rem;
+ 
+
+    &:hover {
+        background-color: $colorTexto;
+        border: 2px solid darken($colorTexto, 60%);
+    }   
+}
+
+@mixin grid($columnas, $espaciado ) {
+    display: grid;
+    gap: $espaciado;
+    grid-template-columns: repeat($columnas, 1fr);
+}

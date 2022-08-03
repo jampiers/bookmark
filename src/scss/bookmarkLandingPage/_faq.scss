@@ -1,0 +1,93 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.faq {
+    margin-top: 3rem;
+
+    .textos {
+        @include m.telefono { 
+            width: 80%;
+            margin: 6rem auto 0 auto;   
+        }
+
+        @include m.tablet { 
+            width: 70%;
+        }
+
+        @include m.tablet-xl { 
+            margin-top: 10rem;
+            max-width: 52rem;
+        }
+    }
+
+    .acordion {
+        margin-top: 3rem;
+
+        @include m.telefono { 
+            width: 80%;
+            margin: 3rem auto 0 auto;
+        }
+
+        @include m.tablet-xl { 
+            max-width: 60rem;
+        }
+
+        @include m.desktop { 
+            max-width: 54rem;
+        }
+        
+        details {
+            margin: .5rem 0;
+
+            summary svg {
+                transition-property: transform;
+                transition-duration: .3s;
+            }
+
+            &[open] {
+                summary svg path{
+                    stroke: v.$softRed;
+                }
+
+                summary svg {
+                    transform: rotate(180deg);
+                }
+            }
+
+            summary {
+                list-style: none;
+                padding: 1.5rem 1rem;
+                color: v.$veryDarkBlue;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                user-select: none;
+
+                &:hover {
+                    color: v.$softRed;
+                    cursor: pointer;
+                }
+            }
+
+            .texto {
+                padding: 0 1rem;
+            }
+        }
+
+        hr {
+            border-color: transparent;
+            border-bottom-color: lighten(v.$grayishBlue, 20%);
+        }
+    }
+
+    .enlace-c {
+        display: flex;
+        justify-content: center;
+
+        .enlace {
+            @include m.boton(v.$softBlue, v.$white);
+            display: inline-block;
+            margin-top: 3rem;
+        }
+    }
+}

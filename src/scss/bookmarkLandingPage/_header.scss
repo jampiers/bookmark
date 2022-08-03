@@ -1,0 +1,175 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.header {
+    background-color: v.$white;
+    box-shadow: 0 3px 8px v.$grayishBlue;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+
+    .barra {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .burger-btn {
+            background-image: url(../img/icon-hamburger.svg);
+            background-size: 2rem;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 2rem;
+            height: 2rem;
+
+            &[aria-expanded="true"] {
+                background-image: url(../img/icon-close.svg);
+            }
+
+            @include m.tablet { 
+                display: none;
+            }
+        }
+
+        .logo {
+            display: block;
+
+            &.none {
+                display: none;
+
+                @include m.tablet { 
+                    display: block;
+                }
+            }
+        }
+
+        .logo-m {
+            display: none;
+
+            &.block {
+                display: block;
+
+                @include m.tablet { 
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &[data-bg="true"] {
+        background: linear-gradient(to right, transparentize(v.$veryDarkBlue, 0.05%) 0%, transparentize(v.$veryDarkBlue, 0.05%) 100%);
+        box-shadow: none;
+
+        @include m.tablet { 
+            background: unset;
+            background-color: white;
+            box-shadow: 0 5px 7px v.$grayishBlue;
+        }   
+    }
+}
+
+.nav {
+    position: fixed;
+    top: 8.9rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, transparentize(v.$veryDarkBlue, 0.05%) 0%, transparentize(v.$veryDarkBlue, 0.05%) 100%);
+    padding: 1rem 3rem 5rem;
+    transform: translateX(-100%);
+    transition-property: transform;
+    transition-duration: .3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 100;
+
+    &[data-visible="true"] {
+        transform: translateX(0%);
+
+        @include m.tablet { 
+            transform: translateX(0%);
+        }
+    }
+
+    @include m.tablet { 
+        flex-direction: row;
+        background: transparent;
+        padding: 0;
+        position: static;
+        transform: translateX(0%);
+    }
+
+    .ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        @include m.tablet { 
+            flex-direction: row;
+            gap: 3rem;
+        }
+
+        li {
+            border-top: 1px solid lighten(v.$grayishBlue, 35%);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 0;
+
+            &:last-of-type .enlace {
+                @include m.botonMovil(v.$white, v.$white);
+
+                @include m.tablet { 
+                    @include m.boton(v.$softRed, v.$white);
+                }
+            }
+
+            @include m.tablet { 
+                padding: 0;
+                border: none;
+            }
+            
+        .enlace {
+                color: v.$white;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+
+                @include m.tablet { 
+                    color: v.$veryDarkBlue;
+                    font-size: 1.5rem;
+                    transition-property: color;
+                    transition-duration: .2s;
+
+                    &:hover {
+                        color: v.$softRed;
+                    }
+                }
+            }
+        }
+    }
+
+    .iconos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+
+        @include m.tablet { 
+            display: none;
+        }
+
+        .logos {
+            transition-property: transform;
+            transition-duration: .3s;
+
+            &:hover {
+                transform: scale(1.3);
+            }
+        }
+    }
+
+}
+

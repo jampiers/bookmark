@@ -1,0 +1,116 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.hero {
+    margin-top: 5rem;
+    position: relative;
+
+    &::before {
+        @include m.desktop { 
+            content: '';
+            width: 35%;
+            height: 80%;
+            background-color: v.$softBlue;
+            border-bottom-left-radius: 40%;                
+            position: absolute;
+            bottom: -1rem;
+            right: 0;
+            z-index: -1;   
+        }
+
+        @include m.desktop-xl { 
+            bottom: -2rem;
+            width: 36%;
+        }
+    }
+
+    .hero-contenido {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 2rem;
+
+        @include m.tablet { 
+            @include m.grid(2, 2rem);
+            align-items: center;   
+        }
+
+        @include m.tablet-xl { 
+            gap: 5rem;
+        }
+        
+
+        .hero-imagen-c {
+            position: relative;
+            z-index: -1;
+
+            &::before {
+                content: '';
+                width: 78%;
+                height: 80%;
+                background-color: v.$softBlue;
+                border-bottom-left-radius: 40%;                
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                z-index: -1;
+
+                @include m.telefono { 
+                    width: 65%;
+                }
+
+                @include m.tablet { 
+                    width: 78%;
+                }
+
+                @include m.desktop { 
+                    display: none;
+                }
+            }
+
+            .hero-imagen {
+                @include m.telefono {
+                    width: 80%;
+                    margin: 0 auto;
+                }
+
+                @include m.tablet { 
+                    width: 100%;
+                }
+            }
+        }
+
+        .hero-textos {
+            @include m.telefono { 
+                width: 80%;
+                margin: 0 auto;
+            }
+
+            @include m.tablet { 
+                width: 100%;
+            }
+            
+        }
+
+        .botones {
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+
+            @include m.tablet { 
+                justify-content: flex-start;
+            }
+
+            a {
+                &:first-of-type {
+                    @include m.botonBody(v.$softBlue, v.$white);
+                }
+
+                &:last-of-type {
+                    @include m.btnFirefox(v.$grayishBlue, v.$white);
+                }
+            }
+        }
+    }
+}

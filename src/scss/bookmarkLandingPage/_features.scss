@@ -1,0 +1,232 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.features {
+    margin-top: 6rem;
+    position: relative;
+
+    &::before {
+        @include m.desktop { 
+            content: '';
+            width: 35%;
+            height: 40%;
+            background-color: v.$softBlue;
+            border-bottom-right-radius: 35%;  
+            border-top-right-radius: 40%;           
+            position: absolute;
+            bottom: -2rem;
+            left: 0;
+            z-index: -1;   
+        }
+
+        @include m.desktop-xl { 
+            width: 40%;
+        }
+
+    }
+
+    .features-contenido {
+
+        .features-arriba {
+
+            @include m.telefono { 
+                width: 80%;
+                margin: 0 auto;   
+            }
+
+            @include m.tablet { 
+                width: 70%;
+            }
+
+            @include m.tablet-xl { 
+                max-width: 60rem;
+            }
+
+        }
+
+        .menu {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            @include m.tablet { 
+                flex-direction: row;
+                width: 85%;
+                margin: 0 auto;
+            }
+
+            @include m.tablet-xl { 
+                max-width: 75rem;
+            }
+            
+            .boton-c {
+                display: flex;
+                justify-content: center;
+                border-block: 1px solid v.$grayishBlue;
+                width: 90%;
+
+                &:nth-child(2) {
+                    border: 0;
+                }
+
+                @include m.tablet { 
+                    border: 0;
+                    border-bottom: 1px solid v.$grayishBlue;
+
+                    &:nth-child(2) {
+                        border-bottom: 1px solid v.$grayishBlue;
+                    }
+                }
+            }
+
+            .boton {
+                padding: 2rem 0;
+                color: v.$grayishBlue;
+                transition-property: color;
+                transition-duration: .2s;
+                position: relative;
+
+                &:hover {
+                    color: v.$softRed;
+                }
+
+                &.activo::before {
+                    opacity: 1;
+                }
+
+                &.activo {
+                    color: v.$veryDarkBlue;
+                }
+
+                &::before {
+                    content: '';
+                    width: 85%;
+                    height: .5rem;
+                    background-color: v.$softRed;
+                    position: absolute;
+                    bottom: -.1rem;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    opacity: 0;
+
+                    @include m.tablet { 
+                        width: 100%;
+                    }
+                }
+
+                @include m.tablet { 
+                    width: 100%;
+                }
+            }
+        }
+
+        .tab-contenido {
+            position: relative;
+            height: 67rem;
+
+            @include m.tablet { 
+                height: 33rem;
+            }
+
+            @include m.tablet-xl { 
+                height: 42rem;
+            }
+
+            @include m.desktop { 
+                height: 42rem;
+            }
+
+
+            .tab {
+                position: absolute;
+                top: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                opacity: 0;
+                transition-property: opacity;
+                transition-duration: .2s;
+
+                &:nth-child(2) .imagen-tab-c {
+                    &::before {
+                        height: 66%;
+                        width: 70%;
+                        bottom: 1rem;
+                    }
+                }
+
+                &:nth-child(3) .imagen-tab-c {
+                    &::before {
+                        height: 70%;
+                        width: 78%;
+                        bottom: 0rem;
+                    }
+                }
+                
+                &:nth-child(2) .imagen-tab-c .imagen-tab,
+                &:nth-child(3) .imagen-tab-c .imagen-tab {
+                    @include m.desktop { 
+                        width: 87%;
+                    }
+                }
+
+                @include m.tablet { 
+                    @include m.grid(2, 5rem);
+                    align-items: center;
+                }
+            
+                &.activo {
+                    opacity: 1;
+                }
+            }
+
+            .imagen-tab-c {
+                position: relative;
+
+                &::before {
+                    content: '';
+                    width: 78%;
+                    height: 80%;
+                    background-color: v.$softBlue;
+                    border-bottom-right-radius: 25%;
+                    border-top-right-radius: 25%;
+                    position: absolute;
+                    bottom: -1rem;
+                    left: 0;
+                    z-index: -1;
+
+                    @include m.desktop { 
+                        display: none;
+                    }
+                }
+
+                .imagen-tab {
+                    width: 100%;
+
+                    @include m.telefono { 
+                        width: 80%; 
+                        margin: 0 auto                   
+                    }
+
+                    @include m.tablet { 
+                        width: 100%;
+                    }
+                }
+            }
+
+            .textos {
+                
+                .enlace {
+                    @include m.boton(v.$softBlue, v.$white);
+                    display: inline-block;
+                    margin-top: 2rem;
+                }
+
+                @include m.desktop-xl { 
+                    padding-right: 10rem;
+                }
+            }
+        }
+    } 
+}

@@ -1,0 +1,81 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.footer {
+    background-color: v.$veryDarkBlue;
+
+    .contenido {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4rem;
+
+        @include m.tablet { 
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .seccion {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+
+            @include m.tablet { 
+                flex-direction: row;
+            }
+
+            .nav-footer {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 2.5rem;
+
+                @include m.tablet { 
+                    flex-direction: row;   
+                }
+
+                .enlace {
+                    color: v.$white;
+                    text-transform: uppercase;
+                    letter-spacing: 2px;
+                    transition-property: color;
+                    transition-duration: .2s;
+                    font-size: 1.6rem;
+
+                    &:hover {
+                        color: v.$softRed;
+                    }
+                }
+            }
+        }
+
+        .iconos {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+
+            .social {
+
+                &:hover svg path {
+                    fill: v.$softRed;
+                }
+
+                &:hover svg {
+                    transform: scale(1.1);
+                }
+
+                svg {
+                    transition-property: transform;
+                    transition-duration: .2s;
+                }
+
+                svg path {  
+                    transition-property: fill;
+                    transition-duration: .2s;
+                }
+            }
+        }
+        
+    }
+}
